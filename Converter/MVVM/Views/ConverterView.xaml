@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Converter.MVVM.Views.ConverterView"
+             Title="ConverterView">
+    <ContentPage.Resources>
+        <Color x:Key="AppColor1">#10002B</Color>
+        <Color x:Key="AppColor2">#240046</Color>
+        <Color x:Key="AppColor3">#3C096C</Color>
+        <Color x:Key="AppColor4">#5A189A</Color>
+        <Color x:Key="TextColor">White</Color>
+    </ContentPage.Resources>
+    <!--Text="{Binding ToValue,StringFormat='{0:0.##}'}"-->
+    <Grid RowDefinitions="*,*">
+        <VerticalStackLayout Grid.Row="0" BackgroundColor="{StaticResource AppColor1}">
+            <Entry Text="{Binding FromValue}" FontSize="100" HorizontalTextAlignment="Center" TextColor="{StaticResource TextColor}"
+                   ReturnCommand="{Binding TextChangedCommand}"/>
+            <Picker TextColor="{StaticResource TextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                        ItemsSource="{Binding FromMeasure}" SelectedItem="{Binding CurrentFromMeasure}"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+            
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1" BackgroundColor="{StaticResource AppColor3}">
+            <Entry  ReturnCommand="{Binding TextChangedCommand}"
+                Text="{Binding ToValue}" FontSize="100" HorizontalTextAlignment="Center" TextColor="{StaticResource TextColor}"/>
+            <Picker TextColor="{StaticResource TextColor}" HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                        ItemsSource="{Binding ToMeasure}" SelectedItem="{Binding CurrentToMeasure}"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
